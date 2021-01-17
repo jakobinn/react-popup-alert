@@ -10,7 +10,7 @@ const App = () => {
     show: false
   })
 
-  function onCloseModal() {
+  function onCloseAlert() {
     setAlert({
       type: '',
       text: '',
@@ -18,10 +18,10 @@ const App = () => {
     })
   }
 
-  function onShowModal(type: string) {
+  function onShowAlert(type: string) {
     setAlert({
       type: type,
-      text: 'Demo modal',
+      text: 'Demo alert',
       show: true
     })
   }
@@ -29,13 +29,13 @@ const App = () => {
   return (
     <div>
       <div style={{ display: 'flex', justifyContent: 'center', marginTop: 50 }}>
-        <button onClick={() => onCloseModal()}>Hide modal</button>
-        <button onClick={() => onShowModal('success')}>
-          Show success modal
+        <button onClick={() => onCloseAlert()}>Hide alert</button>
+        <button onClick={() => onShowAlert('success')}>
+          Show success alert
         </button>
-        <button onClick={() => onShowModal('error')}>Show error modal</button>
-        <button onClick={() => onShowModal('warning')}>
-          Show warning modal
+        <button onClick={() => onShowAlert('error')}>Show error alert</button>
+        <button onClick={() => onShowAlert('warning')}>
+          Show warning alert
         </button>
       </div>
       <Alert
@@ -44,10 +44,10 @@ const App = () => {
         text={alert.text}
         type={alert.type}
         show={alert.show}
-        onClosePress={onCloseModal}
+        onClosePress={onCloseAlert}
         pressCloseOnOutsideClick={true}
         showBorderBottom={true}
-        modalStyles={{}}
+        alertStyles={{}}
         headerStyles={{}}
         textStyles={{}}
         buttonStyles={{}}

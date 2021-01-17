@@ -11,7 +11,7 @@ interface Props {
   color?: string
   onClosePress: Function
   pressCloseOnOutsideClick?: boolean
-  modalStyles?: object
+  alertStyles?: object
   headerStyles?: object
   textStyles?: object
   buttonStyles?: object
@@ -19,19 +19,19 @@ interface Props {
 
 const AlertReact = ({
   //text
-  header,
+  header = 'Warning',
   text,
-  btnText,
+  btnText = 'Close',
   //visuals
-  show,
-  showBorderBottom,
+  show = false,
+  showBorderBottom = true,
   type,
   color,
   //functions
   onClosePress,
-  pressCloseOnOutsideClick,
+  pressCloseOnOutsideClick = true,
   //styles
-  modalStyles = {},
+  alertStyles = {},
   headerStyles = {},
   textStyles = {},
   buttonStyles = {}
@@ -76,11 +76,11 @@ const AlertReact = ({
   }
   const colorToUse = getColor()
 
-  const getModalStyle = () => {
+  const getAlertStyle = () => {
     if (showBorderBottom) {
-      return { borderBottom: '3px solid' + colorToUse + '', ...modalStyles }
+      return { borderBottom: '3px solid' + colorToUse + '', ...alertStyles }
     } else {
-      return modalStyles
+      return alertStyles
     }
   }
 
@@ -89,7 +89,7 @@ const AlertReact = ({
       {show ? (
         <div>
           <div className='backdrop'></div>
-          <div className={'alert-main'} style={getModalStyle()}>
+          <div className={'alert-main'} style={getAlertStyle()}>
             <p className='alert-header' style={headerStyles}>
               {header}
             </p>

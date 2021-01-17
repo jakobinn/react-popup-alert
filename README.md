@@ -23,7 +23,7 @@ const App = () => {
     show: false
   })
 
-  function onCloseModal() {
+  function onCloseAlert() {
     setAlert({
       type: '',
       text: '',
@@ -34,7 +34,7 @@ const App = () => {
   function onShowModal(type) {
     setAlert({
       type: type,
-      text: 'Demo modal',
+      text: 'Demo alert',
       show: true
     })
   }
@@ -42,13 +42,13 @@ const App = () => {
   return (
     <div>
       <div style={{ display: 'flex', justifyContent: 'center', marginTop: 50 }}>
-        <button onClick={() => onCloseModal()}>Hide modal</button>
+        <button onClick={() => onCloseAlert()}>Hide alert</button>
         <button onClick={() => onShowModal('success')}>
-          Show success modal
+          Show success alert
         </button>
-        <button onClick={() => onShowModal('error')}>Show error modal</button>
+        <button onClick={() => onShowModal('error')}>Show error alert</button>
         <button onClick={() => onShowModal('warning')}>
-          Show warning modal
+          Show warning alert
         </button>
       </div>
       <Alert
@@ -57,10 +57,10 @@ const App = () => {
         text={alert.text}
         type={alert.type}
         show={alert.show}
-        onClosePress={onCloseModal}
+        onClosePress={onCloseAlert}
         pressCloseOnOutsideClick={true}
         showBorderBottom={true}
-        modalStyles={{}}
+        alertStyles={{}}
         headerStyles={{}}
         textStyles={{}}
         buttonStyles={{}}
@@ -71,6 +71,8 @@ const App = () => {
 
 export default App
 ```
+
+## Parameters
 
 <table>
 <thead>
@@ -85,99 +87,82 @@ export default App
 <tr>
 <td style="text-align:left;">show</td>
 <td style="text-align:center;"><code>boolean</code></td>
-<td style="text-align:center;">Show / Hide awesome alert</td>
+<td style="text-align:center;">Show / Hide alert</td>
 <td style="text-align:left;">false</td>
 </tr>
 <tr>
-<td style="text-align:left;">useNativeDriver</td>
-<td style="text-align:center;"><code>boolean</code></td>
-<td style="text-align:center;">Use native driver for animations</td>
-<td style="text-align:left;">false</td>
-</tr>
-<tr>
-<td style="text-align:left;">showProgress</td>
-<td style="text-align:center;"><code>boolean</code></td>
-<td style="text-align:center;">Show / Hide progress bar</td>
-<td style="text-align:left;">false</td>
-</tr>
-<tr>
-<td style="text-align:left;">title</td>
+<td style="text-align:left;">header</td>
 <td style="text-align:center;"><code>string</code></td>
-<td style="text-align:center;">Title text to display</td>
-<td style="text-align:left;">hidden</td>
+<td style="text-align:center;">Header text</td>
+<td style="text-align:left;">Warning</td>
 </tr>
 <tr>
-<td style="text-align:left;">message</td>
+<td style="text-align:left;">text</td>
 <td style="text-align:center;"><code>string</code></td>
-<td style="text-align:center;">Message text to display</td>
-<td style="text-align:left;">hidden</td>
+<td style="text-align:center;">Alert text</td>
+<td style="text-align:left;"></td>
 </tr>
 <tr>
-<td style="text-align:left;">closeOnTouchOutside</td>
-<td style="text-align:center;"><code>bool</code></td>
-<td style="text-align:center;">Dismiss alert on clicking outside</td>
+<td style="text-align:left;">btnText</td>
+<td style="text-align:center;"><code>string</code></td>
+<td style="text-align:center;">Text on the button</td>
+<td style="text-align:left;">Close</td>
+</tr>
+<tr>
+<td style="text-align:left;">showBorderBottom</td>
+<td style="text-align:center;"><code>boolean</code></td>
+<td style="text-align:center;">Show colored line at the bottom of the alert</td>
 <td style="text-align:left;">true</td>
 </tr>
 <tr>
-<td style="text-align:left;">closeOnHardwareBackPress</td>
-<td style="text-align:center;"><code>bool</code></td>
-<td style="text-align:center;">Dismiss alert on hardware back press (android)</td>
+<td style="text-align:left;">type</td>
+<td style="text-align:center;"><code>success | warning | error</code></td>
+<td style="text-align:center;"> Show different types of alert</td>
+<td style="text-align:left;"></td>
+</tr>
+<tr>
+<td style="text-align:left;">color</td>
+<td style="text-align:center;"><code>string (hex color)</code></td>
+<td style="text-align:center;">Hex color of the alert (#22ffaa for example)</td>
+<td style="text-align:left;"></td>
+</tr>
+<tr>
+<td style="text-align:left;">onClosePress</td>
+<td style="text-align:center;"><code>function</code></td>
+<td style="text-align:center;">Function that runs when alert closes</td>
+<td style="text-align:left;"></td>
+</tr>
+<tr>
+<td style="text-align:left;">pressCloseOnOutsideClick</td>
+<td style="text-align:center;"><code>boolean</code></td>
+<td style="text-align:center;">Trigger onClosePress function when user clicks outside of the alert</td>
 <td style="text-align:left;">true</td>
 </tr>
 <tr>
-<td style="text-align:left;">showCancelButton</td>
-<td style="text-align:center;"><code>bool</code></td>
-<td style="text-align:center;">Show a cancel button</td>
-<td style="text-align:left;">false</td>
-</tr>
-<tr>
-<td style="text-align:left;">showConfirmButton</td>
-<td style="text-align:center;"><code>bool</code></td>
-<td style="text-align:center;">Show a confirmation button</td>
-<td style="text-align:left;">false</td>
-</tr>
-<tr>
-<td style="text-align:left;">cancelText</td>
-<td style="text-align:center;"><code>string</code></td>
-<td style="text-align:center;">Cancel button text</td>
-<td style="text-align:left;">Cancel</td>
-</tr>
-<tr>
-<td style="text-align:left;">confirmText</td>
-<td style="text-align:center;"><code>string</code></td>
-<td style="text-align:center;">Confirm button text</td>
-<td style="text-align:left;">Confirm</td>
-</tr>
-<tr>
-<td style="text-align:left;">onCancelPressed</td>
-<td style="text-align:center;"><code>func</code></td>
-<td style="text-align:center;">Action to perform when Cancel is pressed</td>
-<td style="text-align:left;">-</td>
-</tr>
-<tr>
-<td style="text-align:left;">onConfirmPressed</td>
-<td style="text-align:center;"><code>func</code></td>
-<td style="text-align:center;">Action to perform when Confirm is pressed</td>
-<td style="text-align:left;">-</td>
-</tr>
-<tr>
-<td style="text-align:left;">onDismiss</td>
-<td style="text-align:center;"><code>func</code></td>
-<td style="text-align:center;">Callback for when alert is dismissed</td>
-<td style="text-align:left;">-</td>
-</tr>
-<tr>
-<td style="text-align:left;">customView</td>
+<td style="text-align:left;">alertStyles</td>
 <td style="text-align:center;"><code>object</code></td>
-<td style="text-align:center;">Custom view to render inside alert</td>
-<td style="text-align:left;">null</td>
+<td style="text-align:center;">Object of styles that affect the popup.</td>
+<td style="text-align:left;"></td>
 </tr>
 <tr>
-<td style="text-align:left;">modalProps</td>
+<td style="text-align:left;">headerStyles</td>
 <td style="text-align:center;"><code>object</code></td>
-<td style="text-align:center;">Additional props to pass for Modal</td>
-<td style="text-align:left;">-</td>
+<td style="text-align:center;">Object of styles that affect the header.</td>
+<td style="text-align:left;"></td>
 </tr>
+<tr>
+<td style="text-align:left;">textStyles</td>
+<td style="text-align:center;"><code>object</code></td>
+<td style="text-align:center;">Object of styles that affect the text of the popup.</td>
+<td style="text-align:left;"></td>
+</tr>
+<tr>
+<td style="text-align:left;">buttonStyles</td>
+<td style="text-align:center;"><code>object</code></td>
+<td style="text-align:center;">Object of styles that affect the popup button.</td>
+<td style="text-align:left;"></td>
+</tr>
+
 </tbody>
 </table>
 
