@@ -28,7 +28,7 @@ const App = () => {
 
   return (
     <div>
-      <div style={{ margin: 'auto', marginTop: 50 }}>
+      <div style={{ display: 'flex', justifyContent: 'center', marginTop: 50 }}>
         <button onClick={() => onCloseModal()}>Hide modal</button>
         <button onClick={() => onShowModal('success')}>
           Show success modal

@@ -6,7 +6,7 @@ interface Props {
   text: string
   btnText: string
   show: boolean
-  showBorderBottom: boolean
+  showBorderBottom?: boolean
   type?: string
   color?: string
   onClosePress: Function
