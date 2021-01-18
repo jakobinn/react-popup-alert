@@ -8,13 +8,16 @@
 npm install --save react-popup-alert
 ```
 
+## Use example
+
+![open and close alert boxes](https://github.com/jakobinn/react-popup-alert/blob/main/alertgif.gif)
+
 ## Usage
 
 ```jsx
 import React from 'react'
 
 import Alert from 'react-popup-alert'
-import 'react-popup-alert/dist/index.css'
 
 const App = () => {
   const [alert, setAlert] = React.useState({
