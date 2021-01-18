@@ -1,6 +1,6 @@
 {
   "name": "react-popup-alert",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Alert popup for ReactJS",
   "author": "jakobinn",
   "license": "MIT",
@@ -23,6 +23,14 @@
     "predeploy": "cd example && npm install && npm run build",
     "deploy": "gh-pages -d example/build"
   },
+  "keywords": [
+    "popup",
+    "alert",
+    "confirm",
+    "dialog",
+    "error",
+    "message"
+  ],
   "peerDependencies": {
     "react": "^16.0.0"
   },
