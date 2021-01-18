@@ -31,7 +31,7 @@ const App = () => {
     })
   }
 
-  function onShowModal(type) {
+  function onShowAlert(type) {
     setAlert({
       type: type,
       text: 'Demo alert',
@@ -43,11 +43,11 @@ const App = () => {
     <div>
       <div style={{ display: 'flex', justifyContent: 'center', marginTop: 50 }}>
         <button onClick={() => onCloseAlert()}>Hide alert</button>
-        <button onClick={() => onShowModal('success')}>
+        <button onClick={() => onShowAlert('success')}>
           Show success alert
         </button>
-        <button onClick={() => onShowModal('error')}>Show error alert</button>
-        <button onClick={() => onShowModal('warning')}>
+        <button onClick={() => onShowAlert('error')}>Show error alert</button>
+        <button onClick={() => onShowAlert('warning')}>
           Show warning alert
         </button>
       </div>
