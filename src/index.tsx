@@ -1,15 +1,22 @@
 import React, { useEffect } from 'react'
+import {
+  headerDefault,
+  btnTextDefault,
+  errorColor,
+  successColor,
+  warningColor
+} from './constants'
 import './styles.scss'
 
-interface Props {
-  header: string
+interface AlertProps {
   text: string
-  btnText: string
+  onClosePress: Function
   show: boolean
+  header?: string | undefined
+  btnText?: string | undefined
   showBorderBottom?: boolean
   type?: string
   color?: string
-  onClosePress: Function
   pressCloseOnOutsideClick?: boolean
   alertStyles?: object
   headerStyles?: object
@@ -18,24 +25,24 @@ interface Props {
 }
 
 const AlertReact = ({
-  //text
-  header = 'Warning',
+  // text
+  header = headerDefault,
+  btnText = btnTextDefault,
   text,
-  btnText = 'Close',
-  //visuals
+  // visuals
   show = false,
   showBorderBottom = true,
   type,
   color,
-  //functions
+  // functions
   onClosePress,
   pressCloseOnOutsideClick = true,
-  //styles
+  // styles
   alertStyles = {},
   headerStyles = {},
   textStyles = {},
   buttonStyles = {}
-}: Props) => {
+}: AlertProps) => {
   /* LIFECYCLE METHODS */
   const handleClickOutsideAlert = (e: Event): void => {
     if (show) {
@@ -47,7 +54,7 @@ const AlertReact = ({
   }
 
   useEffect(() => {
-    //Add event listener if it is shown
+    // Add event listener if it is shown
     if (pressCloseOnOutsideClick && show) {
       document.addEventListener('mousedown', handleClickOutsideAlert)
     }
@@ -67,11 +74,11 @@ const AlertReact = ({
   /* GET DATA */
 
   const getColor = () => {
-    if (color && color.includes('#')) {
+    if (color) {
       return color
-    } else if (type === 'error') return '#dc3545'
-    else if (type === 'success') return '#28a745'
-    else if (type === 'warning') return '#ffc107'
+    } else if (type === 'error') return errorColor
+    else if (type === 'success') return successColor
+    else if (type === 'warning') return warningColor
     else return '#333'
   }
   const colorToUse = getColor()
@@ -87,18 +94,19 @@ const AlertReact = ({
   return (
     <div>
       {show ? (
-        <div>
-          <div className='backdrop'></div>
-          <div className={'alert-main'} style={getAlertStyle()}>
-            <p className='alert-header' style={headerStyles}>
+        <div role='alert'>
+          <div className='backdrop' />
+          <div className='alert-main' style={getAlertStyle()}>
+            <h3 className='alert-header' style={headerStyles}>
               {header}
-            </p>
+            </h3>
             <p className='alert-body' style={textStyles}>
               {text}
             </p>
             <a
               onClick={() => onClosePressClick()}
-              className={'alert-button'}
+              className='alert-button'
+              role='button'
               style={{ backgroundColor: colorToUse, ...buttonStyles }}
               href='#'
             >
