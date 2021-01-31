@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import {
   headerDefault,
   btnTextDefault,
+  defaultColor,
   errorColor,
   successColor,
   warningColor
@@ -30,8 +31,8 @@ const AlertReact = ({
   btnText = btnTextDefault,
   text,
   // visuals
-  show = false,
-  showBorderBottom = true,
+  show,
+  showBorderBottom,
   type,
   color,
   // functions
@@ -44,14 +45,6 @@ const AlertReact = ({
   buttonStyles = {}
 }: AlertProps) => {
   /* LIFECYCLE METHODS */
-  const handleClickOutsideAlert = (e: Event): void => {
-    if (show) {
-      const target = e?.target as HTMLInputElement
-      if (target?.className === 'backdrop') {
-        onClosePressClick()
-      }
-    }
-  }
 
   useEffect(() => {
     // Add event listener if it is shown
@@ -66,6 +59,15 @@ const AlertReact = ({
 
   /* LISTENER FUNCTIONS */
 
+  const handleClickOutsideAlert = (e: Event): void => {
+    if (show) {
+      const target = e?.target as HTMLInputElement
+      if (target?.className === 'backdrop') {
+        onClosePressClick()
+      }
+    }
+  }
+
   const onClosePressClick = () => {
     document.removeEventListener('mousedown', handleClickOutsideAlert)
     onClosePress()
@@ -79,20 +81,20 @@ const AlertReact = ({
     } else if (type === 'error') return errorColor
     else if (type === 'success') return successColor
     else if (type === 'warning') return warningColor
-    else return '#333'
+    else return defaultColor
   }
   const colorToUse = getColor()
 
   const getAlertStyle = () => {
-    if (showBorderBottom) {
-      return { borderBottom: '3px solid' + colorToUse + '', ...alertStyles }
-    } else {
+    if (showBorderBottom === false) {
       return alertStyles
+    } else {
+      return { borderBottom: `3px solid ${colorToUse}`, ...alertStyles }
     }
   }
 
   return (
-    <div>
+    <div className='alert-container'>
       {show ? (
         <div role='alert'>
           <div className='backdrop' />
