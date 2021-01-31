@@ -3,6 +3,9 @@
 
 [![NPM](https://img.shields.io/npm/v/react-popup-alert.svg)](https://www.npmjs.com/package/react-popup-alert) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 ![coverage branches badge](https://github.com/jakobinn/react-popup-alert/blob/main/coverage/badge-branches.svg)
+![coverage functions](https://github.com/jakobinn/react-popup-alert/blob/main/coverage/badge-functions.svg)
+![coverage lines badge](https://github.com/jakobinn/react-popup-alert/blob/main/coverage/badge-lines.svg)
+![coverage statements badge](https://github.com/jakobinn/react-popup-alert/blob/main/coverage/badge-statements.svg)
 
 ```bash
 npm install --save react-popup-alert
